@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotstar clone</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <!-- <link rel="stylesheet" href="./disney.css"/> -->
+</head>
+<style>
+    body{
+      /* width: 100%;
+      height: 100%; */
+        background-color: black;
+        color: #fff;
+    }
+    
+   #navbar {
+  position:fixed;  
+top:0;
+left: 0;
+max-width: 100px;
+font-size:1.3rem;
+height: 100%;
+display:flex;
+flex-direction: column;
+justify-content: center;
+gap:25px;
+padding:20px;
+text-decoration: none; 
+background-color:transparent;
+overflow: hidden;
+   transition: 2s;
+}
+.header{
+left:0; 
+	text-decoration: none;
+    color:#818181;
+	font-weight: bold;
+max-width:40px;
+
+}
+p{
+    display: inline;
+    margin-left: 60px;
+
+    /* transform: translateX(10px); */
+}
+
+#navbar:hover{
+    background-color:transparent;
+   width:150px;
+  
+}
+.header:hover{
+ color: #f1f1f1;
+
+}
+.icon{
+    left:5px; 
+    position: fixed;
+    margin-top: -650px;
+    max-width: 150px;
+}
+ .sub {
+    left: 0;
+    position: absolute;
+    margin-top: -70px;
+    border-radius: 20px;
+    background-color:gainsboro;
+    color: rgb(131, 96, 8);
+    cursor: pointer;
+}
+.container{
+    width: 100%;
+height: 100%;
+margin: 0;
+}
+ .slideshow{
+width: 70%;
+height: 0;
+overflow: hidden;
+margin: 0 auto;
+margin-top: 20px;
+position: relative;
+padding-bottom: 30%;
+background: #818181;
+}
+.slide{
+    position: absolute;
+width: 100%;
+height: 100%;
+}
+.slide img{
+    width: 100%;
+height: 100%;
+/* transition: all 0.15s ease; */
+}
+#img1,#img2,#img3,#img4{
+    display: none;
+}
+.pre{
+ 
+    width:35% ;
+    height: 100%;
+    position: absolute;
+    /* top:0; */
+    left: 0;
+    z-index: 99;
+    cursor: pointer;
+  background: rgba(0, 0, 0, 0.5); 
+  color: #f1f1f1;
+  overflow: hidden;
+}
+.bg{
+  background-color: transparent;
+  opacity: 0.7;
+  color: #f1f1f1;
+  /* color: black; */
+}
+
+.dots{
+    
+width: 100%;
+
+position: absolute;
+text-align: center;
+z-index: 99;
+
+}
+.bar{
+    /* top: -5px; */
+   width: 15px;
+   height: 15px;
+margin: 0 4px;
+position: relative;
+border-radius: 50%;
+display: inline-block;
+background:rgb(150, 154, 154);
+cursor: pointer;
+/* transition: all 0.15s ease; */
+}
+.bar:hover{
+ background-color: #fff; 
+}
+
+  .slide{
+    z-index: -1;
+  }
+  #img1:checked ~  #one,
+  #img2:checked ~  #two,
+  #img3:checked ~  #three,
+  #img4:checked ~ #four{
+    z-index: 9;
+  }
+  .content{
+
+    position: absolute;
+text-align: center;
+/* width:min-content; */
+    font-size: 1.5vw;
+  }
+  .content h2{
+font-size:2vw;
+  }
+  .content p{
+   margin: 0;
+font-size: 0.9vw;
+  }
+  .content button{
+  cursor: pointer;
+    font-size:1.5vw;
+    border-radius:8px ;
+    color: white;
+    border-color: #ffffff14;
+   background: #ffffff14;
+  }
+  @media screen and (min-width: 320px) and (max-width: 426px) {
+    .content p {
+    display: none;
+  }
+  .content h2 {
+    margin-top: -5px;
+  }
+  
+}
+@media screen and (min-width: 426px) {
+  #one h2{
+    margin-top: -8px;
+  }
+}
+h1{
+  position: absolute;
+  margin: 40px 0px 0px 200px;
+  font-size: 1.5vw;
+
+}
+.sr{
+  position: absolute;
+padding-left: 200px;
+  font-size: 1.5vw;
+  margin: 0 auto;
+}
+
+.r{
+
+ display: flex;
+ width: 100%;
+height: 100%;
+gap: 5%;
+ max-width: 70%;
+ padding: 70px;
+margin: 0 auto;
+}
+
+.rr{
+
+display: flex;
+width: 100%;
+height: 100%;
+gap: 5%;
+max-width: 70%;
+padding: 30px;
+margin: 0 auto;
+}
+.rrr{
+
+display: flex;
+width: 100%;
+height: 100%;
+gap: 5%;
+max-width: 70%;
+/* padding: 30px; */
+margin: 0 auto;
+}
+
+.i1 img{
+  width: 100%;
+  height: 100%;
+   max-width: 200px; 
+  height:auto; 
+  position: relative;
+}
+
+.i2 img{
+  width: 100%;
+   max-width: 200px; 
+  height: auto; 
+  position: relative;
+}
+
+.i3 img{
+  width: 100%;
+   max-width: 200px; 
+  height: auto; 
+  position: relative;
+}
+
+.text{
+  /* width: 100%; */
+  position: absolute;
+  bottom: 0;
+top: 0;
+background: rgba(0, 0, 0, 0.6); 
+  text-align: center;
+  font-size: 0.8vw;
+ opacity: 0;
+ /* transition: .5s ease; */
+}
+.text button{
+   font-size: 0.5vw;
+   border-radius:5px ;
+cursor: pointer;
+  }
+@media screen and (min-width: 320px) and (max-width: 767px) {
+     .text h6 {
+    display: none;
+  }
+  .text button{
+   font-size: 0.5vw;
+  }
+   .text h5{
+    margin-top: 30px;
+  }
+}
+
+.i1:hover  {
+  transform: scale(1.5);
+  
+}
+.i1:hover .text {
+  opacity: 1;
+}
+.i2:hover{
+  transform: scale(1.5);
+}
+.i2:hover .text{
+ opacity: 1 ;
+}
+
+.i3:hover{
+  transform: scale(1.5);
+}
+.i3:hover .text{
+ opacity: 1 ;
+}
+
+footer{
+  display: flex;
+  max-width: 70%;
+  justify-content: space-around;
+  text-align: center;
+  /* padding: 20px; */
+  font-size: 1.5vw;
+  margin-top: 100px;
+  margin-left: 100px;
+  /* margin: 100px 0px 0px 100px; */
+  font-family: Arial, sans-serif;
+}
+   p{
+  
+
+  font-weight: bold;
+ margin-bottom: 10px;
+}
+section{
+  width: 27%;
+}
+ul{
+  list-style-type: none;
+      padding: 0;   
+ }
+ 
+li { margin-bottom: 50px; }
+
+#final{ 
+  display: flex; 
+ justify-content: end;
+  display: flex;
+width: 100%;
+height: 100%;
+max-width: 20%;
+margin: 0 auto;
+}
+
+#final img{
+  
+  width: 100%;
+   max-width: 200px; 
+  height: auto; 
+  position: relative;
+
+}
+
+</style>
+<body>
+<div class="main">
+                                                              <!-- navbar -->
+    <navbar id="navbar">
+<img class="icon" src="https://img.hotstar.com/image/upload/v1656431456/web-images/logo-d-plus.svg" alt="hotstar-logo" target="_blank" >
+        
+<form>
+    <button class="sub"  formaction="./subscribe.html">Subscribe></button>
+</form>
+        <a class="header" href="#"><i class='fas fa-user-alt'></i><p>Space</p></a>
+        <a class="header"  href="#"><i class='fas fa-search'></i><p>Search</p></a>
+        <a class="header"  href="#"><i class='fas fa-home'></i><p>Home</p></a>
+        <a class="header"  href="#"><i class='fas fa-tv'></i><p>TV</p></a>
+        <a class="header" href="#"><i class='fas fa-video'></i><p>Movies</p></a>
+        <a class="header"  href="#"><i class='fas fa-baseball-ball'></i><p>Sports</p></a>
+    </navbar>
+
+                                                            <!-- slideshow content -->
+<div class="container">
+<div class="slideshow">
+
+   
+<input type="radio" name="slide" id="img1" checked>
+<input type="radio" name="slide" id="img2" >
+<input type="radio" name="slide" id="img3">
+<input type="radio" name="slide" id="img4">
+ 
+          <div class="slide" id="one">
+    <img class="m1" src="https://img10.hotstar.com/image/upload/f_auto/sources/r1/cms/prod/6066/1576066-i-7aa143bc3b15"  alt="Bigg-Boss-7-Telugu"  >
+      <label for="" class="pre">
+
+         <div class="content"> 
+          <img style="max-width: 150px; " src="https://www.indiantvinfo.com/media/2023/09/Bigg-Boss-7-Telugu.png" alt="bb-icon" >
+    <h2>2023.Telugu</h2><br>
+    <p>it's time for real entertainment with Nagarjuna,unexpected twists and surprises,this season everthing will be "ulta pulta" </p><br><br>
+    <p style="font-size: 1.5vw;">Reality|Drama|celebrities|Family</p><br><br>
+    <button id="btn"><i class="fa-solid fa-play"></i> watch Latest Episode</button><br>
+   </div></label>
+
+</div>
+
+    <div class="slide" id="two">
+        <img class="m2"  src="https://img10.hotstar.com/image/upload/f_auto/sources/r1/cms/prod/1900/1706707421900-i" alt="mansion24" >
+       
+        <label for="" class="pre bg">
+          <div class="content">
+          <br><br><h2>2023.5Languages</h2><br>
+        <p>Horrific events unfold as Amrutha searches for her missing father in an old mansion</p><br><br><br>
+        <p style="font-size: 1.5vw;">Horror|Thriller|Mystery</p><br><br><br><br><br>
+        <button style="background-color: #fff; color: black;"><i class="fa-solid fa-play"></i> Subscribe to Watch</button><br><br><br>
+        </div></label>
+       
+    </div> 
+    
+        <div class="slide" id="three">
+       <img class="m3"  src="https://img10.hotstar.com/image/upload/f_auto/sources/r1/cms/prod/6057/1626057-i-01a6b4a777db" alt="kannur-squad-577" >
+       
+       <label for="" class="pre bg">
+        <div class="content">
+          <br><br><h2>2023.5Languages</h2>
+        <p>In the wake of a scandal,Officer george and his crime squad set out to nab a criminal gang.</p><br><br>
+        <p style="font-size: 1.5vw;">Crime|Thriller|Cop Drama</p><br><br><br>
+        <button style="background-color: #fff; color: black;"><i class="fa-solid fa-play"></i> Subscribe to Watch</button>
+        </div>
+       </label>
+    </div>
+       <div class="slide" id="four">
+            <img class="m4"  src="https://img10.hotstar.com/image/upload/f_auto/sources/r1/cms/prod/9338/1629338-i-7044a53153f3" alt="chinna">
+           
+        
+            <label for="" class="pre">
+              <div class="content">
+               <br><br><br><h2>2023.Telugu</h2><br>
+                <p>Eshwar aka chinna's world crumbles when his beloved niece goes missing.will this emotional pursuit text the limita of love?</p><br><br>
+                <p style="font-size: 1.5vw;">Thriller|Drama|Revenge</p><br><br><br><br>
+                <button><i class="fa-solid fa-play"></i>Watch Now</button>
+              </div>
+            </label>
+        </div>  
+       
+</div>
+
+    <div class="dots">
+    <label for="img1" class="bar"></label>
+    <label for="img2" class="bar"></label>
+    <label for="img3" class="bar"></label>
+    <label for="img4" class="bar"></label>
+   </div>
+    </div>
+
+
+                                                       <!-- ................first row............ -->
+ <h1>LATEST RELEASE</h1>
+<div class="r">
+   
+  <div class="i1" id="r1">
+  <img  src="https://img10.hotstar.com/image/upload/f_auto,t_web_vl_3x/sources/r1/cms/prod/6067/1626067-v-5e5be582cb95" >
+  
+    <div class="text">
+      
+          <h5>2023.5Languages</h5>
+          <h6>In the wake of a scandal,Officer george and his crime squad set out to nab a criminal gang.</h6>
+          <h6>Crime|Thriller|Cop Drama</h6>
+          <button><i class="fa-solid fa-play"></i> Subscribe to Watch</button>
+      </div>
+   
+  </div>
+  <div class="i1" id="r2">
+      <img  src="https://d1vzdswwroofzl.cloudfront.net/wp-content/uploads/2023/10/Chinna-Movie-Review-Rating-2.jpg">
+      
+          <div class="text">
+              <h5>2023.Telugu</h5>
+              <h6>Eshwar aka chinna's world crumbles when his beloved niece goes missing...</h6>
+              <h6>Thriller|Drama|Revenge</h6>
+              <button ><i class="fa-solid fa-play"></i>Watch Now</button>
+          </div>
+        
+  </div>
+  <div class="i1" id="r3">
+      <img   src="https://img10.hotstar.com/image/upload/f_auto,q_90,w_384/sources/r1/cms/prod/5518/1625518-v-5b50426e48e4" >
+  
+      <div class="text">
+          <h5>2023.Hindi</h5>
+          <h6>When an ordinary girl is forced to survive in an extraordinarily dangerous situation,nothing is off-limits</h6>
+          <h6>Crime|Thriller| Drama</h6>
+          <button ><i class="fa-solid fa-play"></i> Watch Now</button>
+      </div>
+  
+  </div>
+  <div class="i1" id="r4">
+  <img  src="https://img10.hotstar.com/image/upload/f_auto,q_90,w_384/sources/r1/cms/prod/9212/1659212-v-4edf75961ab7" >
+  <div class="text">
+      <h5>2023.7Languages</h5>
+      <h6>An attempt for justice gets aquashed when forced to take an unjust path.</h6>
+      <h6>Crime|Thriller| Drama</h6>
+      <button ><i class="fa-solid fa-play"></i> Watch Now</button>
+  </div>
+  </div>
+  <div class="i1" id="r5">
+      <img  src="https://img10.hotstar.com/image/upload/f_auto,q_90,w_384/sources/r1/cms/prod/5547/1665547-v-795b32661046" >
+  
+      <div class="text">
+          <h5>2023.7Languages</h5>
+          <h6>The Sherni is back again,and she is all set to end it all. will she succeed?</h6>
+          <h6>Crime|Thriller| Drama</h6>
+          <button><i class="fa-solid fa-play"></i> Watch  Now</button>
+      </div>
+  
+  </div>
+  <div class="i1" id="r6">
+      <img  src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/66Lc1fndeyr9iJU21lpbW3pt1qr.jpg" >
+     
+      <div class="text">
+          <h5>2023.5Languages</h5>
+          <h6>Horrific events unfold as Amrutha searches for her missing father in an old mansion</h6>
+          <h6>Horror|Thriller|Mystery</h6>
+          <button><i class="fa-solid fa-play"></i> Subscribe to Watch</button>
+      </div>
+     
+  </div>
+
+  
+  </div>
+
+<!-- second row -->
+
+<h1 class="sr">STAR MAA SHOWS</h1>
+<div class="rr">
+<div class="i2" id="rr1">
+  
+    <img  src="https://img10.hotstar.com/image/upload/l_discovery:PP:usp_callouts_on_artwork:Free:Free_Vertical_Eng/c_scale,fl_relative,w_1.0/c_crop,fl_relative,w_1.0,h_1.0/fl_layer_apply/f_auto,q_90,w_384/sources/r1/cms/prod/1481/1581481-v-98622d2f5270"  alt="">
+    
+        <div class="text">
+            <h5>2023.Telugu</h5>
+             <h6>Reality|Drama|Celebrities</h6>
+            <h6>it's time for real entertainment with Nagarjuna,in a whirlwing of unexpected twists,conflicts and surprises"</h6>
+            <button ><i class="fa-solid fa-play"></i> Watch Now</button>
+        </div>
+       </div>
+
+       <div class="i2" id="rr2">
+    <img  src="https://img10.hotstar.com/image/upload/l_discovery:PP:usp_callouts_on_artwork:Free:Free_Vertical_Eng/c_scale,fl_relative,w_1.0/c_crop,fl_relative,w_1.0,h_1.0/fl_layer_apply/f_auto,q_90,w_384/sources/r1/cms/prod/1054/1712159451054-v"  alt="">
+        <div class="text">
+            <h5>2023.Telugu</h5>
+            <h6>Hosted by Sreemukhi,getready for non-stop entertainment </h6>
+            <h6>Reality|Celebrities|Comedy</h6>
+            <button><i class="fa-solid fa-play"></i> Watch Now</button>
+        </div>
+       </div>
+
+       <div class="i2" id="rr3">
+    <img  src="https://img10.hotstar.com/image/upload/l_discovery:PP:usp_callouts_on_artwork:Free:Free_Vertical_Eng/c_scale,fl_relative,w_1.0/c_crop,fl_relative,w_1.0,h_1.0/fl_layer_apply/f_auto,q_90,w_384/sources/r1/cms/prod/5858/1595858-v-283d1ad435f1"   alt="">
+    
+        <div class="text">
+            <h5>2023.Telugu</h5>
+            <h6>Join your favourite Maa Parivar as they Celebrate Vinayaka Chavithi with rituals..</h6>
+            <h6>Reality|Celebrities|Comedy</h6>
+            <button><i class="fa-solid fa-play"></i> Watch Now</button>
+        </div>
+       </div>
+
+<div class="i2" id="rr4">
+    <img src="https://img10.hotstar.com/image/upload/l_discovery:PP:usp_callouts_on_artwork:Free:Free_Vertical_Eng/c_scale,fl_relative,w_1.0/c_crop,fl_relative,w_1.0,h_1.0/fl_layer_apply/f_auto,q_90,w_384/sources/r1/cms/prod/1790/1501790-v-6a1214298857"  alt="">
+
+        <div class="text">
+            <h5>2023.Telugu</h5>
+            <h6>when a murder in the family forces Kutti to separete from them, she takes on a new identity to prove her innocence.</h6>
+            <h6>Family|Drama|Couples</h6>
+            <button ><i class="fa-solid fa-play"></i>  Watch Now</button>
+        </div>
+       </div>
+
+<div class="i2" id="rr5">
+    <img src="https://img10.hotstar.com/image/upload/l_discovery:PP:usp_callouts_on_artwork:Free:Free_Vertical_Eng/c_scale,fl_relative,w_1.0/c_crop,fl_relative,w_1.0,h_1.0/fl_layer_apply/f_auto,q_90,w_384/sources/r1/cms/prod/8918/768918-v"  alt="">
+    
+        <div class="text">
+            <h5>2023.Telugu</h5>
+            <h6>A mother, awife and a daughter-in-law were Tulasi's only identities,</h6>
+            <h6>Family|Drama|Couples</h6>
+            <button><i class="fa-solid fa-play"></i> Subscribe to Watch</button>
+        </div>
+       </div>
+
+<div class="i2" id="rr6">
+    <img src="https://img10.hotstar.com/image/upload/l_discovery:PP:usp_callouts_on_artwork:Free:Free_Vertical_Eng/c_scale,fl_relative,w_1.0/c_crop,fl_relative,w_1.0,h_1.0/fl_layer_apply/f_auto,q_90,w_384/sources/r1/cms/prod/7721/847721-v"  alt="">
+    
+        <div class="text">
+            <h5>2023.Telugu</h5>
+            <h6>Life brings headstrong Vasudhara to clash with Rishi,an arrogant proffessor.</h6>
+            <h6>Family|Drama|Couples</h6>
+            <button><i class="fa-solid fa-play"></i> Subscribe to Watch</button>
+        </div>
+       </div>
+</div>
+
+
+<!-- third row -->
+
+
+<h2 class="sr">POPULAR MOVIES</h2>
+<div class="rr">
+<div class="i3" id="rrr1">
+    <img  src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjalw1Glsy-O_bPM-842FqfitaZ0OrFc7MT8SydE0MPlTnR5FdVZHelGGehgJ1i6lZhXBmd-gj2IXDl_qdHUQtg4C8Ff0FbihT5tHSFftRmyv803wG5Bt0G9VaW4p1z55Iz6ZDpxC1cYCpPi1Ck6gIzJTXP1BpxY9tiK-1Fkv_AmEXcmqEhoB0T2Zo9/s900/Cuttputli.jpg"  alt="">
+    
+        <div class="text">
+            <h5>2023.Hindi</h5>
+            <h6>When a small town gets plunged into the nightmare of serial killings,rookie cop...</h6>
+            <h6>Horror|Thriller|Mystery</h6>
+            <button><i class="fa-solid fa-play"></i> Watch Now</button>
+        </div>
+       </div>
+
+       <div class="i3" id="rrr2">
+    <img src="https://img10.hotstar.com/image/upload/l_discovery:PP:usp_callouts_on_artwork:Free:Free_Vertical_Eng/c_scale,fl_relative,w_1.0/c_crop,fl_relative,w_1.0,h_1.0/fl_layer_apply/f_auto,q_90,w_384/sources/r1/cms/prod/437/1630437-v-c4f1c8f2b83d"  alt="">
+    
+        <div class="text">
+            <h5>2022.5Languages</h5>
+            <h6>Aconvert investigation changes its course when special officer Amar encounters..</h6>
+            <h6>Horror|Thriller|Mystery</h6>
+            <button ><i class="fa-solid fa-play"></i> Watch Now</button>
+        </div>
+       </div>
+
+       <div class="i3" id="rrr3">
+    <img src="https://img10.hotstar.com/image/upload/f_auto,q_90,w_384/sources/r1/cms/prod/2477/1622477-v-c1dc73ba3d60"  alt="">
+    
+        <div class="text">
+            <h5>2020.5Languages</h5>
+            <h6>A high-profile murder baffies the cops when a prison inmate claims responsibility...</h6>
+            <h6>Horror|Thriller|Mystery</h6>
+            <button ><i class="fa-solid fa-play"></i> Watch Now</button>
+        </div>
+       </div>
+
+       <div class="i3" id="rrr4">
+    <img src="https://img10.hotstar.com/image/upload/f_auto,q_90,w_384/sources/r1/cms/prod/4061/1624061-v-bac451b242ad"  alt="">
+    
+        <div class="text">
+            <h5>2020.Hindi</h5>
+            <h6>Aasif's belief in logic and science shatters when he gets possessed by a ghost.</h6>
+            <h6>Horror|Thriller|Mystery</h6>
+            <button ><i class="fa-solid fa-play"></i> Subscribe to Watch</button>
+        </div>
+       </div>
+
+       <div class="i3" id="rrr5">
+    <img src="https://img10.hotstar.com/image/upload/l_discovery:PP:usp_callouts_on_artwork:Free:Free_Vertical_Eng/c_scale,fl_relative,w_1.0/c_crop,fl_relative,w_1.0,h_1.0/fl_layer_apply/f_auto,q_90,w_384/sources/r1/cms/prod/5450/1565450-v-b13a494b7f58"   alt="">
+    
+        <div class="text">
+            <h5>2021.Hindi</h5>
+            <h6>The Kapoors, Bajajs and tiwaris lead pictures-perfect lives until a young woman..</h6>
+            <h6>Horror|Thriller|Mystery</h6>
+            <button><i class="fa-solid fa-play"></i>  Watch Now</button>
+        </div>
+       </div>
+
+       <div class="i3" id="rrr6">
+    <img src="https://img10.hotstar.com/image/upload/l_discovery:PP:usp_callouts_on_artwork:Free:Free_Vertical_Eng/c_scale,fl_relative,w_1.0/c_crop,fl_relative,w_1.0,h_1.0/fl_layer_apply/f_auto,q_90,w_384/sources/r1/cms/prod/5549/1625549-v-4690c16ec69d"width="200px" height="350px" alt="">
+   
+        <div class="text">
+            <h5>2021.3Languages</h5>
+            <h6>Trapped in a hostage crisis inside a hospital, vivaan will move mountains for his wife,...</h6>
+            <h6>Horror|Thriller|Mystery</h6>
+            <button><i class="fa-solid fa-play"></i>  Watch Now</button>
+        </div>
+       </div>
+</div>
+
+<!-- forth row -->
+
+<h2 class="sr">POPULAR Channels</h2>
+<div class="rr">
+<div class="i3" >
+    <img  src="https://img10.hotstar.com/image/upload/f_auto,q_90,w_1920/sources/r1/cms/prod/5227/1535227-a-93d6f25ed745"  alt="">
+    </div>
+        
+    <div class="i3" >
+      <img  src="https://img10.hotstar.com/image/upload/f_auto,q_90,w_1920/sources/r1/cms/prod/4940/1424940-a-6486777c0aa5"  alt="">
+      </div> 
+
+      <div class="i3" >
+        <img  src="https://img10.hotstar.com/image/upload/f_auto,q_90,w_1920/sources/r1/cms/prod/4939/1424939-a-ed900757fe95"  alt="">
+        </div>
+
+        <div class="i3" >
+          <img  src="https://img10.hotstar.com/image/upload/f_auto,q_90,w_1920/sources/r1/cms/prod/4955/1424955-a-832227cfe913"  alt="">
+          </div>
+
+          <div class="i3" id="rrr1">
+            <img  src="https://img10.hotstar.com/image/upload/f_auto,q_90,w_1920/sources/r1/cms/prod/4937/1424937-a-5279bcd44654"  alt="">
+            </div>
+
+            <div class="i3" id="rrr1">
+              <img  src="https://img10.hotstar.com/image/upload/f_auto,q_90,w_1920/sources/r1/cms/prod/4941/1424941-a-b57c5a18e60c"  alt="">
+              </div>
+
+           </div>   
+      
+<!-- fiftrh row -->
+
+<h2 class="sr">POPULAR in Biopic</h2>
+<div class="rr">
+<div class="i3" id="rrr1">
+    <img  src="https://img10.hotstar.com/image/upload/l_discovery:PP:usp_callouts_on_artwork:Free:Free_Vertical_Eng/c_scale,fl_relative,w_1.0/c_crop,fl_relative,w_1.0,h_1.0/fl_layer_apply/f_auto,q_90,w_384/sources/r1/cms/prod/old_images/vertical/MOVIE/3314/1770003314/1770003314-v"  alt="">
+    
+    <div class="text">
+      <h5>2016.Hindi</h5>
+      <h6>A tell-all tale about the life and times of india cricketer Mahendra Singh Dhoni, mapping his journey from a ticket collector to a celebrated sportsman...</h6>
+      <h6>Biopic</h6>
+      <button><i class="fa-solid fa-play"></i> Watch Now</button>
+  </div>
+ </div>
+
+ <div class="i3" id="rrr1">
+  <img  src="https://img10.hotstar.com/image/upload/l_discovery:PP:usp_callouts_on_artwork:Free:Free_Vertical_Eng/c_scale,fl_relative,w_1.0/c_crop,fl_relative,w_1.0,h_1.0/fl_layer_apply/f_auto,q_90,w_384/sources/r1/cms/prod/9519/1711466099519-v"  alt="">
+  
+      <div class="text">
+          <h5>2019.Hindi</h5>
+          <h6>Based on the life of ace mathematician Anand Kumar,Who trained 30 underprivileged students....</h6>
+          <h6>Biopic|Biographical|common-man</h6>
+          <button><i class="fa-solid fa-play"></i> Watch Now</button>
+      </div>
+     </div>    
+
+     <div class="i3" id="rrr1">
+      <img  src="https://img10.hotstar.com/image/upload/l_discovery:PP:usp_callouts_on_artwork:Free:Free_Vertical_Eng/c_scale,fl_relative,w_1.0/c_crop,fl_relative,w_1.0,h_1.0/fl_layer_apply/f_auto,q_90,w_384/sources/r1/cms/prod/old_images/vertical/MOVIE/704/1000090704/1000090704-v"  alt="">
+      
+          <div class="text">
+              <h5>2016.Hindi</h5>
+              <h6>A Biopic on the brave Neeraj Bhanot,the head purser had sacrificed her life for the safety of her...</h6>
+              <h6>biopic|Tragedy|Biographical</h6>
+              <button><i class="fa-solid fa-play"></i> Watch Now</button>
+          </div>
+         </div>
+
+         <div class="i3" id="rrr1">
+          <img  src="https://img10.hotstar.com/image/upload/l_discovery:PP:usp_callouts_on_artwork:Free:Free_Vertical_Eng/c_scale,fl_relative,w_1.0/c_crop,fl_relative,w_1.0,h_1.0/fl_layer_apply/f_auto,q_90,w_384/sources/r1/cms/prod/5034/1710952475034-v"  alt="">
+          
+              <div class="text">
+                  <h5>2022.3Languages</h5>
+                  <h6>Relentless effort can make an underdog rise to the top ,and crickect Pravin Tambe's extraordinary journey proves why age is just a number.</h6>
+                  <h6>Biopic|Sports|Biographical</h6>
+                  <button><i class="fa-solid fa-play"></i> Watch Now</button>
+              </div>
+             </div>
+
+             
+             <div class="i3" id="rrr1">
+              <img  src="https://img10.hotstar.com/image/upload/l_discovery:PP:usp_callouts_on_artwork:Free:Free_Vertical_Eng/c_scale,fl_relative,w_1.0/c_crop,fl_relative,w_1.0,h_1.0/fl_layer_apply/f_auto,q_90,w_384/sources/r1/cms/prod/2657/532657-v"  alt="">
+              
+              <div class="text">
+                <h5>2016.Tamil</h5>
+                <h6>A tell-all tale about the life and times of india cricketer Mahendra Singh Dhoni, mapping his journey from a ticket collector to a celebrated sportsman...</h6>
+                <h6>Biopic</h6>
+                      <button><i class="fa-solid fa-play"></i> Watch Now</button>
+                  </div>
+                 </div>
+
+                 <div class="i3" id="rrr1">
+                  <img  src="https://img10.hotstar.com/image/upload/l_discovery:PP:usp_callouts_on_artwork:Free:Free_Vertical_Eng/c_scale,fl_relative,w_1.0/c_crop,fl_relative,w_1.0,h_1.0/fl_layer_apply/f_auto,q_90,w_384/sources/r1/cms/prod/8135/1248135-v-70393ad795ec"  alt="">
+                  
+                      <div class="text">
+                          <h5>2015.Hindi</h5>
+                          <h6>Charles was charming and charismatic but evil personified.known as the bikini killer, he was the most wanted criminal.Inspired by true events.</h6>
+                          <h6>Crime|Biopic</h6>
+                          <button><i class="fa-solid fa-play"></i> Watch Now</button>
+                      </div>
+                     </div>         
+                     
+</div>
+<!-- sixth row -->
+<h2 class="sr">POPULAR Sports</h2>
+<div class="rr">
+<div class="i3" >
+    <img  src="https://img10.hotstar.com/image/upload/f_auto,q_90,w_1920/sources/r1/cms/prod/6630/1526630-a-9b9ea791cdaf"  alt="">
+    </div>
+
+    <div class="i3" >
+      <img  src="https://img10.hotstar.com/image/upload/f_auto,q_90,w_1920/sources/r1/cms/prod/4550/1534550-a-fc4b5ad51967"  alt="">
+      </div>
+
+      <div class="i3" >
+        <img  src="https://img10.hotstar.com/image/upload/f_auto,q_90,w_1920/sources/r1/cms/prod/6635/1526635-a-453e30065a30"  alt="">
+        </div>
+
+        <div class="i3" >
+          <img  src="https://img10.hotstar.com/image/upload/f_auto,q_90,w_1920/sources/r1/cms/prod/6638/1526638-a-db7e5efc1703"  alt="">
+          </div>
+
+          <div class="i3" >
+            <img  src="https://img10.hotstar.com/image/upload/f_auto,q_90,w_1920/sources/r1/cms/prod/8869/1658869-a-34137191d437"  alt="">
+            </div>
+
+            <div class="i3" >
+              <img  src="https://img10.hotstar.com/image/upload/f_auto,q_90,w_1920/sources/r1/cms/prod/6639/1526639-a-741d71091ea7"  alt="">
+              </div>
+    </div>
+</div>
+<footer>
+  <section>
+    
+     <p>Company</p><br>
+     <ul>
+      <li>About Us</li>
+      <li>Careers</li>
+      
+  </ul>
+</section>
+<section>
+     <p>View Website in</p>
+     <ul>
+      <li>English</li>
+      
+  </ul></section>
+  <section>
+     <p>Need help</p>
+     <ul>
+      <li>Visit help center</li>
+      <li>Share Feedback</li>
+      
+  </ul></section>
+  <section>
+     <p>Connect with Us</p>
+     <ul>
+      <li><i class="fa-brands fa-facebook-f"></i></li>
+      <li><i class="fa-brands fa-twitter"></i></li>
+      
+  </ul>
+  </section></footer>
+  <div>
+<h6 style="margin-left: 150px;">20223 STAR.ALL Rights Reserved.</h6>
+<h6 style="margin-left: 150px;">Terms Of Use  Privacy Policy   FAQ</h6>
+
+
+<div id="final">
+ <img  src="https://img10.hotstar.com/image/upload/f_auto,q_90,w_256/v1661346101/google-playstore" alt="">
+
+<img  src="https://img10.hotstar.com/image/upload/f_auto,q_90,w_256/v1661346071/ios-appstore" alt="">
+</div></div>
+</div>
+</body>
+</html>
